@@ -1,4 +1,4 @@
-using TodoRedis.Infrastructure.Persistence;
+﻿using TodoRedis.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using TodoRedis.Infrastructure.Caching;
 
@@ -12,7 +12,11 @@ builder.Services.AddScoped<ICachingService, CachingService>();
 builder.Services.AddStackExchangeRedisCache(o =>
 {
     o.InstanceName = "intance";
-    o.Configuration = "locahost:6379";
+    
+    // rodando na porta do docker
+    o.Configuration = "172.17.0.1:6379"; 
+
+    //o.Configuration = "localhost:6379";
 });
 
 builder.Services.AddControllers();

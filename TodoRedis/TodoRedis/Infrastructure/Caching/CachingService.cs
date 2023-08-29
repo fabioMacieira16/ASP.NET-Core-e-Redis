@@ -6,8 +6,7 @@ public class CachingService : ICachingService
 {
     private readonly IDistributedCache _cache;
     private readonly DistributedCacheEntryOptions _options;
-    public CachingService(IDistributedCache cache
-                           )
+    public CachingService(IDistributedCache cache)
     {
         _cache = cache;
         _options = new DistributedCacheEntryOptions
@@ -24,6 +23,6 @@ public class CachingService : ICachingService
 
     public async Task SetAsync(string key, string value)
     {
-       await _cache.SetStringAsync(key, value, _options);
+        await _cache.SetStringAsync(key, value, _options);
     }
 }
